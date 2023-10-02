@@ -5,4 +5,4 @@
  * @param unencryptedMessage - подписываемое сообщение в формате XML
  * @returns подпись
  */
-export declare const createXMLSignature: (thumbprint: string, unencryptedMessage: string) => Promise<string>;
+export declare const createXMLSignature: (thumbprint: string, unencryptedMessage: string, isTemplate?: boolean) => Promise<string>;

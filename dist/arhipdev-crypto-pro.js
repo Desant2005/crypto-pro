@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./crypto-pro.ts");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./arhipdev-crypto-pro.ts");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2214,17 +2214,17 @@ module.exports = g;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const constants_1 = __webpack_require__(/*! ../../constants */ "./constants/index.ts");
-const exportBase64_1 = __webpack_require__(/*! ./exportBase64 */ "./api/certificate/exportBase64.ts");
-const getAlgorithm_1 = __webpack_require__(/*! ./getAlgorithm */ "./api/certificate/getAlgorithm.ts");
-const getCadesProp_1 = __webpack_require__(/*! ./getCadesProp */ "./api/certificate/getCadesProp.ts");
-const getDecodedExtendedKeyUsage_1 = __webpack_require__(/*! ./getDecodedExtendedKeyUsage */ "./api/certificate/getDecodedExtendedKeyUsage.ts");
-const getExtendedKeyUsage_1 = __webpack_require__(/*! ./getExtendedKeyUsage */ "./api/certificate/getExtendedKeyUsage.ts");
-const getInfo_1 = __webpack_require__(/*! ./getInfo */ "./api/certificate/getInfo.ts");
-const hasExtendedKeyUsage_1 = __webpack_require__(/*! ./hasExtendedKeyUsage */ "./api/certificate/hasExtendedKeyUsage.ts");
-const isValid_1 = __webpack_require__(/*! ./isValid */ "./api/certificate/isValid.ts");
-class Certificate {
-    constructor(_cadesCertificate, name, issuerName, subjectName, thumbprint, validFrom, validTo) {
+var constants_1 = __webpack_require__(/*! ../../constants */ "./constants/index.ts");
+var exportBase64_1 = __webpack_require__(/*! ./exportBase64 */ "./api/certificate/exportBase64.ts");
+var getAlgorithm_1 = __webpack_require__(/*! ./getAlgorithm */ "./api/certificate/getAlgorithm.ts");
+var getCadesProp_1 = __webpack_require__(/*! ./getCadesProp */ "./api/certificate/getCadesProp.ts");
+var getDecodedExtendedKeyUsage_1 = __webpack_require__(/*! ./getDecodedExtendedKeyUsage */ "./api/certificate/getDecodedExtendedKeyUsage.ts");
+var getExtendedKeyUsage_1 = __webpack_require__(/*! ./getExtendedKeyUsage */ "./api/certificate/getExtendedKeyUsage.ts");
+var getInfo_1 = __webpack_require__(/*! ./getInfo */ "./api/certificate/getInfo.ts");
+var hasExtendedKeyUsage_1 = __webpack_require__(/*! ./hasExtendedKeyUsage */ "./api/certificate/hasExtendedKeyUsage.ts");
+var isValid_1 = __webpack_require__(/*! ./isValid */ "./api/certificate/isValid.ts");
+var Certificate = /** @class */ (function () {
+    function Certificate(_cadesCertificate, name, issuerName, subjectName, thumbprint, validFrom, validTo) {
         this._cadesCertificate = _cadesCertificate;
         this.name = name;
         this.issuerName = issuerName;
@@ -2233,34 +2233,35 @@ class Certificate {
         this.validFrom = validFrom;
         this.validTo = validTo;
     }
-    getOwnerInfo() {
+    Certificate.prototype.getOwnerInfo = function () {
         return getInfo_1.getInfo.call(this, constants_1.SUBJECT_TAGS_TRANSLATIONS, 'SubjectName');
-    }
-    getIssuerInfo() {
+    };
+    Certificate.prototype.getIssuerInfo = function () {
         return getInfo_1.getInfo.call(this, constants_1.ISSUER_TAGS_TRANSLATIONS, 'IssuerName');
-    }
-    getExtendedKeyUsage() {
+    };
+    Certificate.prototype.getExtendedKeyUsage = function () {
         return getExtendedKeyUsage_1.getExtendedKeyUsage.call(this);
-    }
-    getDecodedExtendedKeyUsage() {
+    };
+    Certificate.prototype.getDecodedExtendedKeyUsage = function () {
         return getDecodedExtendedKeyUsage_1.getDecodedExtendedKeyUsage.call(this);
-    }
-    getAlgorithm() {
+    };
+    Certificate.prototype.getAlgorithm = function () {
         return getAlgorithm_1.getAlgorithm.call(this);
-    }
-    getCadesProp(propName) {
+    };
+    Certificate.prototype.getCadesProp = function (propName) {
         return getCadesProp_1.getCadesProp.call(this, propName);
-    }
-    isValid() {
+    };
+    Certificate.prototype.isValid = function () {
         return isValid_1.isValid.call(this);
-    }
-    exportBase64() {
+    };
+    Certificate.prototype.exportBase64 = function () {
         return exportBase64_1.exportBase64.call(this);
-    }
-    hasExtendedKeyUsage(oids) {
+    };
+    Certificate.prototype.hasExtendedKeyUsage = function (oids) {
         return hasExtendedKeyUsage_1.hasExtendedKeyUsage.call(this, oids);
-    }
-}
+    };
+    return Certificate;
+}());
 exports.Certificate = Certificate;
 
 
@@ -2276,18 +2277,18 @@ exports.Certificate = Certificate;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _afterPluginsLoaded_1 = __webpack_require__(/*! ../../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
-const _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
-const _generateCadesFn_1 = __webpack_require__(/*! ../../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
+var _afterPluginsLoaded_1 = __webpack_require__(/*! ../../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
+var _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
+var _generateCadesFn_1 = __webpack_require__(/*! ../../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
 /**
  * Экспортирует сертификат в формате base64
  *
  * @returns сертификат в формате base64
  */
 exports.exportBase64 = _afterPluginsLoaded_1._afterPluginsLoaded(function () {
-    const cadesCertificate = this._cadesCertificate;
+    var cadesCertificate = this._cadesCertificate;
     return eval(_generateCadesFn_1._generateCadesFn(function exportBase64() {
-        let base64;
+        var base64;
         try {
             base64 = _generateCadesFn_1.__cadesAsyncToken__ + cadesCertificate.Export(0);
         }
@@ -2312,22 +2313,22 @@ exports.exportBase64 = _afterPluginsLoaded_1._afterPluginsLoaded(function () {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _afterPluginsLoaded_1 = __webpack_require__(/*! ../../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
-const _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
-const _generateCadesFn_1 = __webpack_require__(/*! ../../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
+var _afterPluginsLoaded_1 = __webpack_require__(/*! ../../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
+var _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
+var _generateCadesFn_1 = __webpack_require__(/*! ../../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
 /**
  * Возвращает информацию об алгоритме сертификата
  *
  * @returns информацию об алгоритме и его OID'е
  */
 exports.getAlgorithm = _afterPluginsLoaded_1._afterPluginsLoaded(function () {
-    const cadesCertificate = this._cadesCertificate;
+    var cadesCertificate = this._cadesCertificate;
     return eval(_generateCadesFn_1._generateCadesFn(function getAlgorithm() {
-        const algorithmInfo = {
+        var algorithmInfo = {
             algorithm: null,
             oid: null,
         };
-        let cadesPublicKey;
+        var cadesPublicKey;
         try {
             cadesPublicKey = _generateCadesFn_1.__cadesAsyncToken__ + cadesCertificate.PublicKey();
             cadesPublicKey = _generateCadesFn_1.__cadesAsyncToken__ + cadesPublicKey.Algorithm;
@@ -2355,9 +2356,9 @@ exports.getAlgorithm = _afterPluginsLoaded_1._afterPluginsLoaded(function () {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _afterPluginsLoaded_1 = __webpack_require__(/*! ../../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
-const _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
-const _generateCadesFn_1 = __webpack_require__(/*! ../../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
+var _afterPluginsLoaded_1 = __webpack_require__(/*! ../../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
+var _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
+var _generateCadesFn_1 = __webpack_require__(/*! ../../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
 /**
  * Возвращает указанное внутренее свойство у сертификата в формате Cades
  *
@@ -2365,9 +2366,9 @@ const _generateCadesFn_1 = __webpack_require__(/*! ../../helpers/_generateCadesF
  * @returns значение запрошенного свойства
  */
 exports.getCadesProp = _afterPluginsLoaded_1._afterPluginsLoaded(function (propName) {
-    const cadesCertificate = this._cadesCertificate;
+    var cadesCertificate = this._cadesCertificate;
     return eval(_generateCadesFn_1._generateCadesFn(function getCadesProp() {
-        let propertyValue;
+        var propertyValue;
         try {
             propertyValue = _generateCadesFn_1.__cadesAsyncToken__ + cadesCertificate[propName];
         }
@@ -2391,6 +2392,17 @@ exports.getCadesProp = _afterPluginsLoaded_1._afterPluginsLoaded(function (propN
 
 "use strict";
 
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -2400,18 +2412,55 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const constants_1 = __webpack_require__(/*! ../../constants */ "./constants/index.ts");
-const _afterPluginsLoaded_1 = __webpack_require__(/*! ../../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
+var constants_1 = __webpack_require__(/*! ../../constants */ "./constants/index.ts");
+var _afterPluginsLoaded_1 = __webpack_require__(/*! ../../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
 /**
  * Возвращает расшифрованные ОИД'ы сертификата
  *
  * @returns словарь расшифрованных ОИД'ов
  */
 exports.getDecodedExtendedKeyUsage = _afterPluginsLoaded_1._afterPluginsLoaded(function () {
-    return __awaiter(this, void 0, void 0, function* () {
-        const certificateOids = yield this.getExtendedKeyUsage();
-        return certificateOids.reduce((decodedOids, oidCode) => (Object.assign(Object.assign({}, decodedOids), { [oidCode]: constants_1.OIDS_DICTIONARY[oidCode] || null })), {});
+    return __awaiter(this, void 0, void 0, function () {
+        var certificateOids;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, this.getExtendedKeyUsage()];
+                case 1:
+                    certificateOids = _a.sent();
+                    return [2 /*return*/, certificateOids.reduce(function (decodedOids, oidCode) {
+                            var _a;
+                            return (__assign(__assign({}, decodedOids), (_a = {}, _a[oidCode] = constants_1.OIDS_DICTIONARY[oidCode] || null, _a)));
+                        }, {})];
+            }
+        });
     });
 });
 
@@ -2428,26 +2477,26 @@ exports.getDecodedExtendedKeyUsage = _afterPluginsLoaded_1._afterPluginsLoaded(f
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _afterPluginsLoaded_1 = __webpack_require__(/*! ../../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
-const _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
-const _generateCadesFn_1 = __webpack_require__(/*! ../../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
+var _afterPluginsLoaded_1 = __webpack_require__(/*! ../../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
+var _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
+var _generateCadesFn_1 = __webpack_require__(/*! ../../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
 /**
  * Возвращает ОИД'ы сертификата
  *
  * @returns список ОИД'ов
  */
 exports.getExtendedKeyUsage = _afterPluginsLoaded_1._afterPluginsLoaded(function () {
-    const cadesCertificate = this._cadesCertificate;
+    var cadesCertificate = this._cadesCertificate;
     return eval(_generateCadesFn_1._generateCadesFn(function getExtendedKeyUsage() {
-        const OIDS = [];
-        let count;
+        var OIDS = [];
+        var count;
         try {
             count = _generateCadesFn_1.__cadesAsyncToken__ + cadesCertificate.ExtendedKeyUsage();
             count = _generateCadesFn_1.__cadesAsyncToken__ + count.EKUs;
             count = _generateCadesFn_1.__cadesAsyncToken__ + count.Count;
             if (count > 0) {
                 while (count > 0) {
-                    let cadesExtendedKeyUsage;
+                    var cadesExtendedKeyUsage = void 0;
                     cadesExtendedKeyUsage = _generateCadesFn_1.__cadesAsyncToken__ + cadesCertificate.ExtendedKeyUsage();
                     cadesExtendedKeyUsage = _generateCadesFn_1.__cadesAsyncToken__ + cadesExtendedKeyUsage.EKUs;
                     cadesExtendedKeyUsage = _generateCadesFn_1.__cadesAsyncToken__ + cadesExtendedKeyUsage.Item(count);
@@ -2486,11 +2535,38 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const _afterPluginsLoaded_1 = __webpack_require__(/*! ../../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
-const _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
-const _parseCertInfo_1 = __webpack_require__(/*! ../../helpers/_parseCertInfo */ "./helpers/_parseCertInfo.ts");
-const getCadesProp_1 = __webpack_require__(/*! ./getCadesProp */ "./api/certificate/getCadesProp.ts");
+var _afterPluginsLoaded_1 = __webpack_require__(/*! ../../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
+var _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
+var _parseCertInfo_1 = __webpack_require__(/*! ../../helpers/_parseCertInfo */ "./helpers/_parseCertInfo.ts");
+var getCadesProp_1 = __webpack_require__(/*! ./getCadesProp */ "./api/certificate/getCadesProp.ts");
 /**
  * Возвращает расшифрованную информацию о сертификате из указанного свойства по тэгам
  *
@@ -2499,16 +2575,23 @@ const getCadesProp_1 = __webpack_require__(/*! ./getCadesProp */ "./api/certific
  * @returns расшифрованная информация по отдельным тэгам
  */
 exports.getInfo = _afterPluginsLoaded_1._afterPluginsLoaded(function (tags, entitiesPath) {
-    return __awaiter(this, void 0, void 0, function* () {
-        let entities;
-        try {
-            entities = yield getCadesProp_1.getCadesProp.call(this, entitiesPath);
-        }
-        catch (error) {
-            console.error(error);
-            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при извлечении информации из сертификата');
-        }
-        return _parseCertInfo_1._parseCertInfo(tags, entities);
+    return __awaiter(this, void 0, void 0, function () {
+        var entities, error_1;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    _a.trys.push([0, 2, , 3]);
+                    return [4 /*yield*/, getCadesProp_1.getCadesProp.call(this, entitiesPath)];
+                case 1:
+                    entities = _a.sent();
+                    return [3 /*break*/, 3];
+                case 2:
+                    error_1 = _a.sent();
+                    console.error(error_1);
+                    throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error_1) || 'Ошибка при извлечении информации из сертификата');
+                case 3: return [2 /*return*/, _parseCertInfo_1._parseCertInfo(tags, entities)];
+            }
+        });
     });
 });
 
@@ -2533,8 +2616,35 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const _afterPluginsLoaded_1 = __webpack_require__(/*! ../../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
+var _afterPluginsLoaded_1 = __webpack_require__(/*! ../../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
 /**
  * Проверяет наличие ОИД'а (ОИД'ов) у сертификата
  *
@@ -2542,16 +2652,22 @@ const _afterPluginsLoaded_1 = __webpack_require__(/*! ../../helpers/_afterPlugin
  * @returns флаг наличия ОИД'ов у сертификата
  */
 exports.hasExtendedKeyUsage = _afterPluginsLoaded_1._afterPluginsLoaded(function (oids) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const certOids = yield this.getExtendedKeyUsage();
-        let result;
-        if (Array.isArray(oids)) {
-            result = oids.every((oidToCheck) => certOids.some((certOid) => certOid === oidToCheck));
-        }
-        else {
-            result = certOids.some((certOid) => certOid === oids);
-        }
-        return result;
+    return __awaiter(this, void 0, void 0, function () {
+        var certOids, result;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4 /*yield*/, this.getExtendedKeyUsage()];
+                case 1:
+                    certOids = _a.sent();
+                    if (Array.isArray(oids)) {
+                        result = oids.every(function (oidToCheck) { return certOids.some(function (certOid) { return certOid === oidToCheck; }); });
+                    }
+                    else {
+                        result = certOids.some(function (certOid) { return certOid === oids; });
+                    }
+                    return [2 /*return*/, result];
+            }
+        });
     });
 });
 
@@ -2586,18 +2702,18 @@ __export(__webpack_require__(/*! ./certificate */ "./api/certificate/certificate
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _afterPluginsLoaded_1 = __webpack_require__(/*! ../../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
-const _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
-const _generateCadesFn_1 = __webpack_require__(/*! ../../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
+var _afterPluginsLoaded_1 = __webpack_require__(/*! ../../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
+var _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
+var _generateCadesFn_1 = __webpack_require__(/*! ../../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
 /**
  * Проверяет действительность сертификата
  *
  * @returns флаг валидности
  */
 exports.isValid = _afterPluginsLoaded_1._afterPluginsLoaded(function () {
-    const cadesCertificate = this._cadesCertificate;
+    var cadesCertificate = this._cadesCertificate;
     return eval(_generateCadesFn_1._generateCadesFn(function isValid() {
-        let isValid;
+        var isValid;
         try {
             isValid = _generateCadesFn_1.__cadesAsyncToken__ + cadesCertificate.IsValid();
             isValid = _generateCadesFn_1.__cadesAsyncToken__ + isValid.Result;
@@ -2631,13 +2747,40 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const constants_1 = __webpack_require__(/*! ../constants */ "./constants/index.ts");
-const _afterPluginsLoaded_1 = __webpack_require__(/*! ../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
-const _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
-const _generateCadesFn_1 = __webpack_require__(/*! ../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
-const _getCadesCert_1 = __webpack_require__(/*! ../helpers/_getCadesCert */ "./helpers/_getCadesCert.ts");
-const _getDateObj_1 = __webpack_require__(/*! ../helpers/_getDateObj */ "./helpers/_getDateObj.ts");
+var constants_1 = __webpack_require__(/*! ../constants */ "./constants/index.ts");
+var _afterPluginsLoaded_1 = __webpack_require__(/*! ../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
+var _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
+var _generateCadesFn_1 = __webpack_require__(/*! ../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
+var _getCadesCert_1 = __webpack_require__(/*! ../helpers/_getCadesCert */ "./helpers/_getCadesCert.ts");
+var _getDateObj_1 = __webpack_require__(/*! ../helpers/_getDateObj */ "./helpers/_getDateObj.ts");
 /**
  * Создает присоединенную подпись сообщения по отпечатку сертификата
  *
@@ -2645,63 +2788,71 @@ const _getDateObj_1 = __webpack_require__(/*! ../helpers/_getDateObj */ "./helpe
  * @param message - подписываемое сообщение
  * @returns подпись в формате PKCS#7
  */
-exports.createAttachedSignature = _afterPluginsLoaded_1._afterPluginsLoaded((thumbprint, unencryptedMessage) => __awaiter(void 0, void 0, void 0, function* () {
-    const { cadesplugin } = window;
-    const cadesCertificate = yield _getCadesCert_1._getCadesCert(thumbprint);
-    return eval(_generateCadesFn_1._generateCadesFn(function createAttachedSignature() {
-        let cadesAttrs;
-        let cadesSignedData;
-        let cadesSigner;
-        try {
-            cadesAttrs = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CADESCOM.CPAttribute');
-            cadesSignedData = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CAdESCOM.CadesSignedData');
-            cadesSigner = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CAdESCOM.CPSigner');
+exports.createAttachedSignature = _afterPluginsLoaded_1._afterPluginsLoaded(function (thumbprint, unencryptedMessage) { return __awaiter(void 0, void 0, void 0, function () {
+    var cadesplugin, cadesCertificate;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                cadesplugin = window.cadesplugin;
+                return [4 /*yield*/, _getCadesCert_1._getCadesCert(thumbprint)];
+            case 1:
+                cadesCertificate = _a.sent();
+                return [2 /*return*/, eval(_generateCadesFn_1._generateCadesFn(function createAttachedSignature() {
+                        var cadesAttrs;
+                        var cadesSignedData;
+                        var cadesSigner;
+                        try {
+                            cadesAttrs = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CADESCOM.CPAttribute');
+                            cadesSignedData = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CAdESCOM.CadesSignedData');
+                            cadesSigner = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CAdESCOM.CPSigner');
+                        }
+                        catch (error) {
+                            console.error(error);
+                            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при инициализации подписи');
+                        }
+                        var currentTime = _getDateObj_1._getDateObj(new Date());
+                        try {
+                            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesAttrs.propset_Name(constants_1.CADESCOM_AUTHENTICATED_ATTRIBUTE_SIGNING_TIME));
+                            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesAttrs.propset_Value(currentTime));
+                        }
+                        catch (error) {
+                            console.error(error);
+                            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при установке времени подписи');
+                        }
+                        var messageBase64;
+                        try {
+                            messageBase64 = Buffer.from(unencryptedMessage).toString('base64');
+                        }
+                        catch (error) {
+                            console.error(error);
+                            throw new Error('Ошибка при преобразовании сообщения в Base64');
+                        }
+                        var cadesAuthAttrs;
+                        try {
+                            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSigner.propset_Certificate(cadesCertificate));
+                            cadesAuthAttrs = _generateCadesFn_1.__cadesAsyncToken__ + cadesSigner.AuthenticatedAttributes2;
+                            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesAuthAttrs.Add(cadesAttrs));
+                            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSignedData.propset_ContentEncoding(cadesplugin.CADESCOM_BASE64_TO_BINARY));
+                            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSignedData.propset_Content(messageBase64));
+                            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSigner.propset_Options(cadesplugin.CAPICOM_CERTIFICATE_INCLUDE_WHOLE_CHAIN));
+                        }
+                        catch (error) {
+                            console.error(error);
+                            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при указании данных для подписи');
+                        }
+                        var signature;
+                        try {
+                            signature = _generateCadesFn_1.__cadesAsyncToken__ + cadesSignedData.SignCades(cadesSigner, cadesplugin.CADESCOM_PKCS7_TYPE);
+                        }
+                        catch (error) {
+                            console.error(error);
+                            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при подписании данных');
+                        }
+                        return signature;
+                    }))];
         }
-        catch (error) {
-            console.error(error);
-            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при инициализации подписи');
-        }
-        const currentTime = _getDateObj_1._getDateObj(new Date());
-        try {
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesAttrs.propset_Name(constants_1.CADESCOM_AUTHENTICATED_ATTRIBUTE_SIGNING_TIME));
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesAttrs.propset_Value(currentTime));
-        }
-        catch (error) {
-            console.error(error);
-            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при установке времени подписи');
-        }
-        let messageBase64;
-        try {
-            messageBase64 = Buffer.from(unencryptedMessage).toString('base64');
-        }
-        catch (error) {
-            console.error(error);
-            throw new Error('Ошибка при преобразовании сообщения в Base64');
-        }
-        let cadesAuthAttrs;
-        try {
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSigner.propset_Certificate(cadesCertificate));
-            cadesAuthAttrs = _generateCadesFn_1.__cadesAsyncToken__ + cadesSigner.AuthenticatedAttributes2;
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesAuthAttrs.Add(cadesAttrs));
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSignedData.propset_ContentEncoding(cadesplugin.CADESCOM_BASE64_TO_BINARY));
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSignedData.propset_Content(messageBase64));
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSigner.propset_Options(cadesplugin.CAPICOM_CERTIFICATE_INCLUDE_WHOLE_CHAIN));
-        }
-        catch (error) {
-            console.error(error);
-            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при указании данных для подписи');
-        }
-        let signature;
-        try {
-            signature = _generateCadesFn_1.__cadesAsyncToken__ + cadesSignedData.SignCades(cadesSigner, cadesplugin.CADESCOM_PKCS7_TYPE);
-        }
-        catch (error) {
-            console.error(error);
-            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при подписании данных');
-        }
-        return signature;
-    }));
-}));
+    });
+}); });
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/buffer/index.js */ "../node_modules/buffer/index.js").Buffer))
 
@@ -2725,13 +2876,40 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const constants_1 = __webpack_require__(/*! ../constants */ "./constants/index.ts");
-const _afterPluginsLoaded_1 = __webpack_require__(/*! ../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
-const _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
-const _generateCadesFn_1 = __webpack_require__(/*! ../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
-const _getCadesCert_1 = __webpack_require__(/*! ../helpers/_getCadesCert */ "./helpers/_getCadesCert.ts");
-const _getDateObj_1 = __webpack_require__(/*! ../helpers/_getDateObj */ "./helpers/_getDateObj.ts");
+var constants_1 = __webpack_require__(/*! ../constants */ "./constants/index.ts");
+var _afterPluginsLoaded_1 = __webpack_require__(/*! ../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
+var _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
+var _generateCadesFn_1 = __webpack_require__(/*! ../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
+var _getCadesCert_1 = __webpack_require__(/*! ../helpers/_getCadesCert */ "./helpers/_getCadesCert.ts");
+var _getDateObj_1 = __webpack_require__(/*! ../helpers/_getDateObj */ "./helpers/_getDateObj.ts");
 /**
  * Создает отсоединенную подпись хеша по отпечатку сертификата
  *
@@ -2739,66 +2917,74 @@ const _getDateObj_1 = __webpack_require__(/*! ../helpers/_getDateObj */ "./helpe
  * @param messageHash - хеш подписываемого сообщения, сгенерированный по ГОСТ Р 34.11-2012 256 бит
  * @returns подпись в формате PKCS#7
  */
-exports.createDetachedSignature = _afterPluginsLoaded_1._afterPluginsLoaded((thumbprint, messageHash) => __awaiter(void 0, void 0, void 0, function* () {
-    const { cadesplugin } = window;
-    const cadesCertificate = yield _getCadesCert_1._getCadesCert(thumbprint);
-    return eval(_generateCadesFn_1._generateCadesFn(function createDetachedSignature() {
-        let cadesAttrs;
-        let cadesHashedData;
-        let cadesSignedData;
-        let cadesSigner;
-        try {
-            cadesAttrs = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CADESCOM.CPAttribute');
-            cadesHashedData = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CAdESCOM.HashedData');
-            cadesSignedData = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CAdESCOM.CadesSignedData');
-            cadesSigner = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CAdESCOM.CPSigner');
+exports.createDetachedSignature = _afterPluginsLoaded_1._afterPluginsLoaded(function (thumbprint, messageHash) { return __awaiter(void 0, void 0, void 0, function () {
+    var cadesplugin, cadesCertificate;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                cadesplugin = window.cadesplugin;
+                return [4 /*yield*/, _getCadesCert_1._getCadesCert(thumbprint)];
+            case 1:
+                cadesCertificate = _a.sent();
+                return [2 /*return*/, eval(_generateCadesFn_1._generateCadesFn(function createDetachedSignature() {
+                        var cadesAttrs;
+                        var cadesHashedData;
+                        var cadesSignedData;
+                        var cadesSigner;
+                        try {
+                            cadesAttrs = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CADESCOM.CPAttribute');
+                            cadesHashedData = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CAdESCOM.HashedData');
+                            cadesSignedData = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CAdESCOM.CadesSignedData');
+                            cadesSigner = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CAdESCOM.CPSigner');
+                        }
+                        catch (error) {
+                            console.error(error);
+                            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при инициализации подписи');
+                        }
+                        var currentTime = _getDateObj_1._getDateObj(new Date());
+                        try {
+                            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesAttrs.propset_Name(constants_1.CADESCOM_AUTHENTICATED_ATTRIBUTE_SIGNING_TIME));
+                            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesAttrs.propset_Value(currentTime));
+                        }
+                        catch (error) {
+                            console.error(error);
+                            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при установке времени подписи');
+                        }
+                        var cadesAuthAttrs;
+                        try {
+                            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSigner.propset_Certificate(cadesCertificate));
+                            cadesAuthAttrs = _generateCadesFn_1.__cadesAsyncToken__ + cadesSigner.AuthenticatedAttributes2;
+                            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesAuthAttrs.Add(cadesAttrs));
+                            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSigner.propset_Options(cadesplugin.CAPICOM_CERTIFICATE_INCLUDE_WHOLE_CHAIN));
+                        }
+                        catch (error) {
+                            console.error(error);
+                            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при установке сертификата');
+                        }
+                        try {
+                            void (_generateCadesFn_1.__cadesAsyncToken__ +
+                                cadesHashedData.propset_Algorithm(cadesplugin.CADESCOM_HASH_ALGORITHM_CP_GOST_3411_2012_256));
+                            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesHashedData.SetHashValue(messageHash));
+                        }
+                        catch (error) {
+                            console.error(error);
+                            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при установке хеша');
+                        }
+                        var signature;
+                        try {
+                            signature =
+                                _generateCadesFn_1.__cadesAsyncToken__ +
+                                    cadesSignedData.SignHash(cadesHashedData, cadesSigner, cadesplugin.CADESCOM_PKCS7_TYPE);
+                        }
+                        catch (error) {
+                            console.error(error);
+                            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при подписании данных');
+                        }
+                        return signature;
+                    }))];
         }
-        catch (error) {
-            console.error(error);
-            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при инициализации подписи');
-        }
-        const currentTime = _getDateObj_1._getDateObj(new Date());
-        try {
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesAttrs.propset_Name(constants_1.CADESCOM_AUTHENTICATED_ATTRIBUTE_SIGNING_TIME));
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesAttrs.propset_Value(currentTime));
-        }
-        catch (error) {
-            console.error(error);
-            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при установке времени подписи');
-        }
-        let cadesAuthAttrs;
-        try {
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSigner.propset_Certificate(cadesCertificate));
-            cadesAuthAttrs = _generateCadesFn_1.__cadesAsyncToken__ + cadesSigner.AuthenticatedAttributes2;
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesAuthAttrs.Add(cadesAttrs));
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSigner.propset_Options(cadesplugin.CAPICOM_CERTIFICATE_INCLUDE_WHOLE_CHAIN));
-        }
-        catch (error) {
-            console.error(error);
-            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при установке сертификата');
-        }
-        try {
-            void (_generateCadesFn_1.__cadesAsyncToken__ +
-                cadesHashedData.propset_Algorithm(cadesplugin.CADESCOM_HASH_ALGORITHM_CP_GOST_3411_2012_256));
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesHashedData.SetHashValue(messageHash));
-        }
-        catch (error) {
-            console.error(error);
-            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при установке хеша');
-        }
-        let signature;
-        try {
-            signature =
-                _generateCadesFn_1.__cadesAsyncToken__ +
-                    cadesSignedData.SignHash(cadesHashedData, cadesSigner, cadesplugin.CADESCOM_PKCS7_TYPE);
-        }
-        catch (error) {
-            console.error(error);
-            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при подписании данных');
-        }
-        return signature;
-    }));
-}));
+    });
+}); });
 
 
 /***/ }),
@@ -2821,10 +3007,37 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const _afterPluginsLoaded_1 = __webpack_require__(/*! ../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
-const _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
-const _generateCadesFn_1 = __webpack_require__(/*! ../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
+var _afterPluginsLoaded_1 = __webpack_require__(/*! ../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
+var _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
+var _generateCadesFn_1 = __webpack_require__(/*! ../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
 /**
  * Создает хеш сообщения по ГОСТ Р 34.11-2012 (по умолчанию 256 бит)
  * https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D1%80%D0%B8%D0%B1%D0%BE%D0%B3_(%D1%85%D0%B5%D1%88-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D1%8F)
@@ -2834,45 +3047,48 @@ const _generateCadesFn_1 = __webpack_require__(/*! ../helpers/_generateCadesFn *
  *
  * @returns хеш
  */
-exports.createHash = _afterPluginsLoaded_1._afterPluginsLoaded((unencryptedMessage, options) => __awaiter(void 0, void 0, void 0, function* () {
-    const { cadesplugin } = window;
-    return eval(_generateCadesFn_1._generateCadesFn(function createHash() {
-        var _a;
-        const cadesHashedData = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CAdESCOM.HashedData');
-        let messageBase64;
-        let hash;
-        try {
-            if ((options === null || options === void 0 ? void 0 : options.encoding) && typeof unencryptedMessage === 'string') {
-                messageBase64 = Buffer.from(unencryptedMessage, options === null || options === void 0 ? void 0 : options.encoding).toString('base64');
-            }
-            else {
-                messageBase64 = Buffer.from(unencryptedMessage).toString('base64');
-            }
-        }
-        catch (error) {
-            console.error(error);
-            throw new Error('Ошибка при преобразовании сообщения в Base64');
-        }
-        try {
-            void (_generateCadesFn_1.__cadesAsyncToken__ +
-                cadesHashedData.propset_Algorithm((_a = options === null || options === void 0 ? void 0 : options.hashedAlgorithm) !== null && _a !== void 0 ? _a : cadesplugin.CADESCOM_HASH_ALGORITHM_CP_GOST_3411_2012_256));
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesHashedData.propset_DataEncoding(cadesplugin.CADESCOM_BASE64_TO_BINARY));
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesHashedData.Hash(messageBase64));
-        }
-        catch (error) {
-            console.error(error);
-            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при инициализации хэширования');
-        }
-        try {
-            hash = _generateCadesFn_1.__cadesAsyncToken__ + cadesHashedData.Value;
-        }
-        catch (error) {
-            console.error(error);
-            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при создании хэша');
-        }
-        return hash;
-    }));
-}));
+exports.createHash = _afterPluginsLoaded_1._afterPluginsLoaded(function (unencryptedMessage, options) { return __awaiter(void 0, void 0, void 0, function () {
+    var cadesplugin;
+    return __generator(this, function (_a) {
+        cadesplugin = window.cadesplugin;
+        return [2 /*return*/, eval(_generateCadesFn_1._generateCadesFn(function createHash() {
+                var _a;
+                var cadesHashedData = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CAdESCOM.HashedData');
+                var messageBase64;
+                var hash;
+                try {
+                    if ((options === null || options === void 0 ? void 0 : options.encoding) && typeof unencryptedMessage === 'string') {
+                        messageBase64 = Buffer.from(unencryptedMessage, options === null || options === void 0 ? void 0 : options.encoding).toString('base64');
+                    }
+                    else {
+                        messageBase64 = Buffer.from(unencryptedMessage).toString('base64');
+                    }
+                }
+                catch (error) {
+                    console.error(error);
+                    throw new Error('Ошибка при преобразовании сообщения в Base64');
+                }
+                try {
+                    void (_generateCadesFn_1.__cadesAsyncToken__ +
+                        cadesHashedData.propset_Algorithm((_a = options === null || options === void 0 ? void 0 : options.hashedAlgorithm) !== null && _a !== void 0 ? _a : cadesplugin.CADESCOM_HASH_ALGORITHM_CP_GOST_3411_2012_256));
+                    void (_generateCadesFn_1.__cadesAsyncToken__ + cadesHashedData.propset_DataEncoding(cadesplugin.CADESCOM_BASE64_TO_BINARY));
+                    void (_generateCadesFn_1.__cadesAsyncToken__ + cadesHashedData.Hash(messageBase64));
+                }
+                catch (error) {
+                    console.error(error);
+                    throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при инициализации хэширования');
+                }
+                try {
+                    hash = _generateCadesFn_1.__cadesAsyncToken__ + cadesHashedData.Value;
+                }
+                catch (error) {
+                    console.error(error);
+                    throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при создании хэша');
+                }
+                return hash;
+            }))];
+    });
+}); });
 
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../node_modules/buffer/index.js */ "../node_modules/buffer/index.js").Buffer))
 
@@ -2896,13 +3112,40 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const constants_1 = __webpack_require__(/*! ../constants */ "./constants/index.ts");
-const _afterPluginsLoaded_1 = __webpack_require__(/*! ../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
-const _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
-const _generateCadesFn_1 = __webpack_require__(/*! ../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
-const _getCadesCert_1 = __webpack_require__(/*! ../helpers/_getCadesCert */ "./helpers/_getCadesCert.ts");
-const _getDateObj_1 = __webpack_require__(/*! ../helpers/_getDateObj */ "./helpers/_getDateObj.ts");
+var constants_1 = __webpack_require__(/*! ../constants */ "./constants/index.ts");
+var _afterPluginsLoaded_1 = __webpack_require__(/*! ../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
+var _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
+var _generateCadesFn_1 = __webpack_require__(/*! ../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
+var _getCadesCert_1 = __webpack_require__(/*! ../helpers/_getCadesCert */ "./helpers/_getCadesCert.ts");
+var _getDateObj_1 = __webpack_require__(/*! ../helpers/_getDateObj */ "./helpers/_getDateObj.ts");
 /**
  * Создает подпись base64 строки по отпечатку сертификата
  *
@@ -2911,61 +3154,72 @@ const _getDateObj_1 = __webpack_require__(/*! ../helpers/_getDateObj */ "./helpe
  * @param detachedSignature = true - тип подписи открепленная (true) / присоединенная (false)
  * @returns подпись
  */
-exports.createSignature = _afterPluginsLoaded_1._afterPluginsLoaded((thumbprint, messageHash, detachedSignature = true) => __awaiter(void 0, void 0, void 0, function* () {
-    console.warn([
-        'cryptoPro: Метод "createSignature" является устаревшим и будет убран из будущих версий.',
-        'Используйте "createAttachedSignature" и "createDetachedSignature".',
-    ].join('\n'));
-    const { cadesplugin } = window;
-    const cadesCertificate = yield _getCadesCert_1._getCadesCert(thumbprint);
-    return eval(_generateCadesFn_1._generateCadesFn(function createSignature() {
-        let cadesAttrs;
-        let cadesSignedData;
-        let cadesSigner;
-        try {
-            cadesAttrs = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CADESCOM.CPAttribute');
-            cadesSignedData = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CAdESCOM.CadesSignedData');
-            cadesSigner = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CAdESCOM.CPSigner');
-        }
-        catch (error) {
-            console.error(error);
-            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при инициализации подписи');
-        }
-        const currentTime = _getDateObj_1._getDateObj(new Date());
-        try {
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesAttrs.propset_Name(constants_1.CADESCOM_AUTHENTICATED_ATTRIBUTE_SIGNING_TIME));
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesAttrs.propset_Value(currentTime));
-        }
-        catch (error) {
-            console.error(error);
-            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при установке времени подписи');
-        }
-        let cadesAuthAttrs;
-        try {
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSigner.propset_Certificate(cadesCertificate));
-            cadesAuthAttrs = _generateCadesFn_1.__cadesAsyncToken__ + cadesSigner.AuthenticatedAttributes2;
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesAuthAttrs.Add(cadesAttrs));
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSignedData.propset_ContentEncoding(cadesplugin.CADESCOM_BASE64_TO_BINARY));
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSignedData.propset_Content(messageHash));
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSigner.propset_Options(cadesplugin.CAPICOM_CERTIFICATE_INCLUDE_END_ENTITY_ONLY));
-        }
-        catch (error) {
-            console.error(error);
-            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при указании данных для подписи');
-        }
-        let signature;
-        try {
-            signature =
-                _generateCadesFn_1.__cadesAsyncToken__ +
-                    cadesSignedData.SignCades(cadesSigner, cadesplugin.CADESCOM_CADES_BES, detachedSignature);
-        }
-        catch (error) {
-            console.error(error);
-            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при подписании данных');
-        }
-        return signature;
-    }));
-}));
+exports.createSignature = _afterPluginsLoaded_1._afterPluginsLoaded(function (thumbprint, messageHash, detachedSignature) {
+    if (detachedSignature === void 0) { detachedSignature = true; }
+    return __awaiter(void 0, void 0, void 0, function () {
+        var cadesplugin, cadesCertificate;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    console.warn([
+                        'cryptoPro: Метод "createSignature" является устаревшим и будет убран из будущих версий.',
+                        'Используйте "createAttachedSignature" и "createDetachedSignature".',
+                    ].join('\n'));
+                    cadesplugin = window.cadesplugin;
+                    return [4 /*yield*/, _getCadesCert_1._getCadesCert(thumbprint)];
+                case 1:
+                    cadesCertificate = _a.sent();
+                    return [2 /*return*/, eval(_generateCadesFn_1._generateCadesFn(function createSignature() {
+                            var cadesAttrs;
+                            var cadesSignedData;
+                            var cadesSigner;
+                            try {
+                                cadesAttrs = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CADESCOM.CPAttribute');
+                                cadesSignedData = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CAdESCOM.CadesSignedData');
+                                cadesSigner = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CAdESCOM.CPSigner');
+                            }
+                            catch (error) {
+                                console.error(error);
+                                throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при инициализации подписи');
+                            }
+                            var currentTime = _getDateObj_1._getDateObj(new Date());
+                            try {
+                                void (_generateCadesFn_1.__cadesAsyncToken__ + cadesAttrs.propset_Name(constants_1.CADESCOM_AUTHENTICATED_ATTRIBUTE_SIGNING_TIME));
+                                void (_generateCadesFn_1.__cadesAsyncToken__ + cadesAttrs.propset_Value(currentTime));
+                            }
+                            catch (error) {
+                                console.error(error);
+                                throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при установке времени подписи');
+                            }
+                            var cadesAuthAttrs;
+                            try {
+                                void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSigner.propset_Certificate(cadesCertificate));
+                                cadesAuthAttrs = _generateCadesFn_1.__cadesAsyncToken__ + cadesSigner.AuthenticatedAttributes2;
+                                void (_generateCadesFn_1.__cadesAsyncToken__ + cadesAuthAttrs.Add(cadesAttrs));
+                                void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSignedData.propset_ContentEncoding(cadesplugin.CADESCOM_BASE64_TO_BINARY));
+                                void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSignedData.propset_Content(messageHash));
+                                void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSigner.propset_Options(cadesplugin.CAPICOM_CERTIFICATE_INCLUDE_END_ENTITY_ONLY));
+                            }
+                            catch (error) {
+                                console.error(error);
+                                throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при указании данных для подписи');
+                            }
+                            var signature;
+                            try {
+                                signature =
+                                    _generateCadesFn_1.__cadesAsyncToken__ +
+                                        cadesSignedData.SignCades(cadesSigner, cadesplugin.CADESCOM_CADES_BES, detachedSignature);
+                            }
+                            catch (error) {
+                                console.error(error);
+                                throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при подписании данных');
+                            }
+                            return signature;
+                        }))];
+            }
+        });
+    });
+});
 
 
 /***/ }),
@@ -2988,11 +3242,38 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const _afterPluginsLoaded_1 = __webpack_require__(/*! ../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
-const _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
-const _generateCadesFn_1 = __webpack_require__(/*! ../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
-const _getCadesCert_1 = __webpack_require__(/*! ../helpers/_getCadesCert */ "./helpers/_getCadesCert.ts");
+var _afterPluginsLoaded_1 = __webpack_require__(/*! ../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
+var _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
+var _generateCadesFn_1 = __webpack_require__(/*! ../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
+var _getCadesCert_1 = __webpack_require__(/*! ../helpers/_getCadesCert */ "./helpers/_getCadesCert.ts");
 /**
  * Создает XML подпись для документа в формате XML
  *
@@ -3000,46 +3281,59 @@ const _getCadesCert_1 = __webpack_require__(/*! ../helpers/_getCadesCert */ "./h
  * @param unencryptedMessage - подписываемое сообщение в формате XML
  * @returns подпись
  */
-exports.createXMLSignature = _afterPluginsLoaded_1._afterPluginsLoaded((thumbprint, unencryptedMessage) => __awaiter(void 0, void 0, void 0, function* () {
-    const { cadesplugin } = window;
-    const cadesCertificate = yield _getCadesCert_1._getCadesCert(thumbprint);
-    return eval(_generateCadesFn_1._generateCadesFn(function createXMLSignature() {
-        let cadesSigner;
-        let cadesSignedXML;
-        try {
-            cadesSigner = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CAdESCOM.CPSigner');
-            cadesSignedXML = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CAdESCOM.SignedXML');
-        }
-        catch (error) {
-            console.error(error);
-            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при инициализации подписи');
-        }
-        try {
-            const signatureMethod = 'urn:ietf:params:xml:ns:cpxmlsec:algorithms:gostr34102012-gostr34112012-256';
-            const digestMethod = 'urn:ietf:params:xml:ns:cpxmlsec:algorithms:gostr34112012-256';
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSigner.propset_Certificate(cadesCertificate));
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSigner.propset_CheckCertificate(true));
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSignedXML.propset_Content(unencryptedMessage));
-            void (_generateCadesFn_1.__cadesAsyncToken__ +
-                cadesSignedXML.propset_SignatureType(cadesplugin.CADESCOM_XML_SIGNATURE_TYPE_ENVELOPED));
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSignedXML.propset_SignatureMethod(signatureMethod));
-            void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSignedXML.propset_DigestMethod(digestMethod));
-        }
-        catch (error) {
-            console.error(error);
-            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при указании данных для подписи');
-        }
-        let signature;
-        try {
-            signature = _generateCadesFn_1.__cadesAsyncToken__ + cadesSignedXML.Sign(cadesSigner);
-        }
-        catch (error) {
-            console.error(error);
-            throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при подписании данных');
-        }
-        return signature;
-    }));
-}));
+exports.createXMLSignature = _afterPluginsLoaded_1._afterPluginsLoaded(function (thumbprint, unencryptedMessage, isTemplate) {
+    if (isTemplate === void 0) { isTemplate = false; }
+    return __awaiter(void 0, void 0, void 0, function () {
+        var cadesplugin, cadesCertificate;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    cadesplugin = window.cadesplugin;
+                    return [4 /*yield*/, _getCadesCert_1._getCadesCert(thumbprint)];
+                case 1:
+                    cadesCertificate = _a.sent();
+                    return [2 /*return*/, eval(_generateCadesFn_1._generateCadesFn(function createXMLSignature() {
+                            var cadesSigner;
+                            var cadesSignedXML;
+                            try {
+                                cadesSigner = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CAdESCOM.CPSigner');
+                                cadesSignedXML = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CAdESCOM.SignedXML');
+                            }
+                            catch (error) {
+                                console.error(error);
+                                throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при инициализации подписи');
+                            }
+                            try {
+                                var signatureMethod = 'urn:ietf:params:xml:ns:cpxmlsec:algorithms:gostr34102012-gostr34112012-256';
+                                var digestMethod = 'urn:ietf:params:xml:ns:cpxmlsec:algorithms:gostr34112012-256';
+                                void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSigner.propset_Certificate(cadesCertificate));
+                                void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSigner.propset_CheckCertificate(true));
+                                void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSignedXML.propset_Content(unencryptedMessage));
+                                void (_generateCadesFn_1.__cadesAsyncToken__ +
+                                    cadesSignedXML.propset_SignatureType(isTemplate
+                                        ? cadesplugin.CADESCOM_XML_SIGNATURE_TYPE_TEMPLATE
+                                        : cadesplugin.CADESCOM_XML_SIGNATURE_TYPE_ENVELOPED));
+                                void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSignedXML.propset_SignatureMethod(signatureMethod));
+                                void (_generateCadesFn_1.__cadesAsyncToken__ + cadesSignedXML.propset_DigestMethod(digestMethod));
+                            }
+                            catch (error) {
+                                console.error(error);
+                                throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при указании данных для подписи');
+                            }
+                            var signature;
+                            try {
+                                signature = _generateCadesFn_1.__cadesAsyncToken__ + cadesSignedXML.Sign(cadesSigner);
+                            }
+                            catch (error) {
+                                console.error(error);
+                                throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при подписании данных');
+                            }
+                            return signature;
+                        }))];
+            }
+        });
+    });
+});
 
 
 /***/ }),
@@ -3062,10 +3356,37 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const _afterPluginsLoaded_1 = __webpack_require__(/*! ../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
-const _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
-const _generateCadesFn_1 = __webpack_require__(/*! ../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
+var _afterPluginsLoaded_1 = __webpack_require__(/*! ../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
+var _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
+var _generateCadesFn_1 = __webpack_require__(/*! ../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
 /**
  * Функция кастомной реализации с доступом к Cades плагину напрямую
  *
@@ -3086,15 +3407,20 @@ const _generateCadesFn_1 = __webpack_require__(/*! ../helpers/_generateCadesFn *
  *
  * @returns асинхронный результат выполнения передаваемой функции
  */
-exports.execute = _afterPluginsLoaded_1._afterPluginsLoaded((callback) => __awaiter(void 0, void 0, void 0, function* () {
-    return yield callback({
-        cadesplugin: window.cadesplugin,
-        _generateCadesFn: _generateCadesFn_1._generateCadesFn,
-        __cadesAsyncToken__: _generateCadesFn_1.__cadesAsyncToken__,
-        __createCadesPluginObject__: _generateCadesFn_1.__createCadesPluginObject__,
-        _extractMeaningfulErrorMessage: _extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage,
+exports.execute = _afterPluginsLoaded_1._afterPluginsLoaded(function (callback) { return __awaiter(void 0, void 0, void 0, function () {
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0: return [4 /*yield*/, callback({
+                    cadesplugin: window.cadesplugin,
+                    _generateCadesFn: _generateCadesFn_1._generateCadesFn,
+                    __cadesAsyncToken__: _generateCadesFn_1.__cadesAsyncToken__,
+                    __createCadesPluginObject__: _generateCadesFn_1.__createCadesPluginObject__,
+                    _extractMeaningfulErrorMessage: _extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage,
+                })];
+            case 1: return [2 /*return*/, _a.sent()];
+        }
     });
-}));
+}); });
 
 
 /***/ }),
@@ -3117,26 +3443,61 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const _afterPluginsLoaded_1 = __webpack_require__(/*! ../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
-const getUserCertificates_1 = __webpack_require__(/*! ./getUserCertificates */ "./api/getUserCertificates.ts");
+var _afterPluginsLoaded_1 = __webpack_require__(/*! ../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
+var getUserCertificates_1 = __webpack_require__(/*! ./getUserCertificates */ "./api/getUserCertificates.ts");
 /**
  * Возвращает сертификат по отпечатку
  *
  * @param thumbprint - отпечаток сертификата
  * @returns сертификат
  */
-exports.getCertificate = _afterPluginsLoaded_1._afterPluginsLoaded((thumbprint) => __awaiter(void 0, void 0, void 0, function* () {
-    if (!thumbprint) {
-        throw new Error('Отпечаток не указан');
-    }
-    const availableCertificates = yield getUserCertificates_1.getUserCertificates();
-    const foundCertificate = availableCertificates.find((cert) => cert.thumbprint === thumbprint);
-    if (!foundCertificate) {
-        throw new Error(`Сертификат с отпечатком: "${thumbprint}" не найден`);
-    }
-    return foundCertificate;
-}));
+exports.getCertificate = _afterPluginsLoaded_1._afterPluginsLoaded(function (thumbprint) { return __awaiter(void 0, void 0, void 0, function () {
+    var availableCertificates, foundCertificate;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                if (!thumbprint) {
+                    throw new Error('Отпечаток не указан');
+                }
+                return [4 /*yield*/, getUserCertificates_1.getUserCertificates()];
+            case 1:
+                availableCertificates = _a.sent();
+                foundCertificate = availableCertificates.find(function (cert) { return cert.thumbprint === thumbprint; });
+                if (!foundCertificate) {
+                    throw new Error("\u0421\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442 \u0441 \u043E\u0442\u043F\u0435\u0447\u0430\u0442\u043A\u043E\u043C: \"" + thumbprint + "\" \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D");
+                }
+                return [2 /*return*/, foundCertificate];
+        }
+    });
+}); });
 
 
 /***/ }),
@@ -3151,21 +3512,21 @@ exports.getCertificate = _afterPluginsLoaded_1._afterPluginsLoaded((thumbprint) 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _afterPluginsLoaded_1 = __webpack_require__(/*! ../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
-const _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
-const _generateCadesFn_1 = __webpack_require__(/*! ../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
+var _afterPluginsLoaded_1 = __webpack_require__(/*! ../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
+var _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
+var _generateCadesFn_1 = __webpack_require__(/*! ../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
 /**
  * Предоставляет информацию о системе
  *
  * @returns информацию о CSP и плагине
  */
-exports.getSystemInfo = _afterPluginsLoaded_1._afterPluginsLoaded(() => {
-    const sysInfo = {
+exports.getSystemInfo = _afterPluginsLoaded_1._afterPluginsLoaded(function () {
+    var sysInfo = {
         cadesVersion: null,
         cspVersion: null,
     };
     return eval(_generateCadesFn_1._generateCadesFn(function getSystemInfo() {
-        let cadesAbout;
+        var cadesAbout;
         try {
             cadesAbout = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CAdESCOM.About');
             sysInfo.cadesVersion = _generateCadesFn_1.__cadesAsyncToken__ + cadesAbout.PluginVersion;
@@ -3197,26 +3558,27 @@ exports.getSystemInfo = _afterPluginsLoaded_1._afterPluginsLoaded(() => {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const certificate_1 = __webpack_require__(/*! ./certificate */ "./api/certificate/index.ts");
-const constants_1 = __webpack_require__(/*! ../constants */ "./constants/index.ts");
-const _afterPluginsLoaded_1 = __webpack_require__(/*! ../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
-const _extractCommonName_1 = __webpack_require__(/*! ../helpers/_extractCommonName */ "./helpers/_extractCommonName.ts");
-const _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
-const _generateCadesFn_1 = __webpack_require__(/*! ../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
-let certificatesCache;
+var certificate_1 = __webpack_require__(/*! ./certificate */ "./api/certificate/index.ts");
+var constants_1 = __webpack_require__(/*! ../constants */ "./constants/index.ts");
+var _afterPluginsLoaded_1 = __webpack_require__(/*! ../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
+var _extractCommonName_1 = __webpack_require__(/*! ../helpers/_extractCommonName */ "./helpers/_extractCommonName.ts");
+var _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
+var _generateCadesFn_1 = __webpack_require__(/*! ../helpers/_generateCadesFn */ "./helpers/_generateCadesFn.ts");
+var certificatesCache;
 /**
  * Возвращает список сертификатов, доступных пользователю в системе
  *
  * @param resetCache = false - позволяет сбросить кэш ранее полученных сертификатов
  * @returns список сертификатов
  */
-exports.getUserCertificates = _afterPluginsLoaded_1._afterPluginsLoaded((resetCache = false) => {
-    const { cadesplugin } = window;
+exports.getUserCertificates = _afterPluginsLoaded_1._afterPluginsLoaded(function (resetCache) {
+    if (resetCache === void 0) { resetCache = false; }
+    var cadesplugin = window.cadesplugin;
     if (!resetCache && certificatesCache) {
         return certificatesCache;
     }
     return eval(_generateCadesFn_1._generateCadesFn(function getUserCertificates() {
-        let cadesStore;
+        var cadesStore;
         try {
             cadesStore = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CAdESCOM.Store');
         }
@@ -3232,8 +3594,8 @@ exports.getUserCertificates = _afterPluginsLoaded_1._afterPluginsLoaded((resetCa
             console.error(error);
             throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при открытии хранилища');
         }
-        let cadesCertificates;
-        let cadesCertificatesCount;
+        var cadesCertificates;
+        var cadesCertificatesCount;
         try {
             cadesCertificates = _generateCadesFn_1.__cadesAsyncToken__ + cadesStore.Certificates;
             if (cadesCertificates) {
@@ -3256,10 +3618,10 @@ exports.getUserCertificates = _afterPluginsLoaded_1._afterPluginsLoaded((resetCa
         if (!cadesCertificatesCount) {
             throw new Error('Нет доступных сертификатов');
         }
-        const certificateList = [];
+        var certificateList = [];
         try {
             while (cadesCertificatesCount) {
-                const cadesCertificate = _generateCadesFn_1.__cadesAsyncToken__ + cadesCertificates.Item(cadesCertificatesCount);
+                var cadesCertificate = _generateCadesFn_1.__cadesAsyncToken__ + cadesCertificates.Item(cadesCertificatesCount);
                 certificateList.push(new certificate_1.Certificate(cadesCertificate, _extractCommonName_1._extractCommonName(_generateCadesFn_1.__cadesAsyncToken__ + cadesCertificate.SubjectName), _generateCadesFn_1.__cadesAsyncToken__ + cadesCertificate.IssuerName, _generateCadesFn_1.__cadesAsyncToken__ + cadesCertificate.SubjectName, _generateCadesFn_1.__cadesAsyncToken__ + cadesCertificate.Thumbprint, _generateCadesFn_1.__cadesAsyncToken__ + cadesCertificate.ValidFromDate, _generateCadesFn_1.__cadesAsyncToken__ + cadesCertificate.ValidToDate));
                 cadesCertificatesCount--;
             }
@@ -3323,34 +3685,87 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const _afterPluginsLoaded_1 = __webpack_require__(/*! ../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
-const _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
-const _isSupportedCadesVersion_1 = __webpack_require__(/*! ../helpers/_isSupportedCadesVersion */ "./helpers/_isSupportedCadesVersion.ts");
-const _isSupportedCSPVersion_1 = __webpack_require__(/*! ../helpers/_isSupportedCSPVersion */ "./helpers/_isSupportedCSPVersion.ts");
-const getSystemInfo_1 = __webpack_require__(/*! ./getSystemInfo */ "./api/getSystemInfo.ts");
+var _afterPluginsLoaded_1 = __webpack_require__(/*! ../helpers/_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
+var _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ../helpers/_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
+var _isSupportedCadesVersion_1 = __webpack_require__(/*! ../helpers/_isSupportedCadesVersion */ "./helpers/_isSupportedCadesVersion.ts");
+var _isSupportedCSPVersion_1 = __webpack_require__(/*! ../helpers/_isSupportedCSPVersion */ "./helpers/_isSupportedCSPVersion.ts");
+var getSystemInfo_1 = __webpack_require__(/*! ./getSystemInfo */ "./api/getSystemInfo.ts");
 /**
  * Проверяет корректность настроек ЭП на машине
  *
  * @returns флаг корректности настроек
  */
-exports.isValidSystemSetup = _afterPluginsLoaded_1._afterPluginsLoaded(() => __awaiter(void 0, void 0, void 0, function* () {
-    let systemInfo;
-    try {
-        systemInfo = yield getSystemInfo_1.getSystemInfo();
-    }
-    catch (error) {
-        console.error(error);
-        throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Настройки ЭП на данной машине не верны');
-    }
-    if (!_isSupportedCadesVersion_1._isSupportedCadesVersion(systemInfo.cadesVersion)) {
-        throw new Error('Не поддерживаемая версия плагина');
-    }
-    if (!_isSupportedCSPVersion_1._isSupportedCSPVersion(systemInfo.cspVersion)) {
-        throw new Error('Не поддерживаемая версия CSP');
-    }
-    return true;
-}));
+exports.isValidSystemSetup = _afterPluginsLoaded_1._afterPluginsLoaded(function () { return __awaiter(void 0, void 0, void 0, function () {
+    var systemInfo, error_1;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, getSystemInfo_1.getSystemInfo()];
+            case 1:
+                systemInfo = _a.sent();
+                return [3 /*break*/, 3];
+            case 2:
+                error_1 = _a.sent();
+                console.error(error_1);
+                throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error_1) || 'Настройки ЭП на данной машине не верны');
+            case 3:
+                if (!_isSupportedCadesVersion_1._isSupportedCadesVersion(systemInfo.cadesVersion)) {
+                    throw new Error('Не поддерживаемая версия плагина');
+                }
+                if (!_isSupportedCSPVersion_1._isSupportedCSPVersion(systemInfo.cspVersion)) {
+                    throw new Error('Не поддерживаемая версия CSP');
+                }
+                return [2 /*return*/, true];
+        }
+    });
+}); });
+
+
+/***/ }),
+
+/***/ "./arhipdev-crypto-pro.ts":
+/*!********************************!*\
+  !*** ./arhipdev-crypto-pro.ts ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__(/*! ./api */ "./api/index.ts"));
 
 
 /***/ }),
@@ -3659,24 +4074,6 @@ exports.SUBJECT_TAGS_TRANSLATIONS = [
 
 /***/ }),
 
-/***/ "./crypto-pro.ts":
-/*!***********************!*\
-  !*** ./crypto-pro.ts ***!
-  \***********************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-function __export(m) {
-    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
-}
-Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(/*! ./api */ "./api/index.ts"));
-
-
-/***/ }),
-
 /***/ "./helpers/_afterPluginsLoaded.ts":
 /*!****************************************!*\
   !*** ./helpers/_afterPluginsLoaded.ts ***!
@@ -3695,43 +4092,85 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __generator = (this && this.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (_) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ./_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
-let isSetLogLevel = false;
-let isPluginLoaded = false;
-exports._afterPluginsLoaded = (fn) => {
-    const canPromise = Boolean(window.Promise);
-    return function (...args) {
-        return __awaiter(this, void 0, void 0, function* () {
-            if (!isPluginLoaded) {
-                try {
-                    __webpack_require__(/*! ../vendor/cadesplugin_api */ "./vendor/cadesplugin_api.js");
+var _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ./_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
+var isSetLogLevel = false;
+var isPluginLoaded = false;
+exports._afterPluginsLoaded = function (fn) {
+    var canPromise = Boolean(window.Promise);
+    return function () {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i] = arguments[_i];
+        }
+        return __awaiter(this, void 0, void 0, function () {
+            var cadesplugin, error_1;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (!isPluginLoaded) {
+                            try {
+                                __webpack_require__(/*! ../vendor/cadesplugin_api */ "./vendor/cadesplugin_api.js");
+                            }
+                            catch (error) {
+                                console.error(error);
+                                throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при подключении модуля для работы с Cades plugin');
+                            }
+                            isPluginLoaded = true;
+                        }
+                        cadesplugin = window.cadesplugin;
+                        if (!canPromise) {
+                            throw new Error('Необходим полифилл для Promise');
+                        }
+                        if (!cadesplugin) {
+                            throw new Error('Не подключен модуль для работы с Cades plugin');
+                        }
+                        if (!isSetLogLevel) {
+                            cadesplugin.set_log_level(cadesplugin.LOG_LEVEL_ERROR);
+                            isSetLogLevel = true;
+                        }
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, cadesplugin];
+                    case 2:
+                        _a.sent();
+                        return [3 /*break*/, 4];
+                    case 3:
+                        error_1 = _a.sent();
+                        console.error(error_1);
+                        throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error_1) || 'Ошибка при инициализации модуля для работы с Cades plugin');
+                    case 4: return [4 /*yield*/, fn.apply(this, args)];
+                    case 5: return [2 /*return*/, _a.sent()];
                 }
-                catch (error) {
-                    console.error(error);
-                    throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при подключении модуля для работы с Cades plugin');
-                }
-                isPluginLoaded = true;
-            }
-            const { cadesplugin } = window;
-            if (!canPromise) {
-                throw new Error('Необходим полифилл для Promise');
-            }
-            if (!cadesplugin) {
-                throw new Error('Не подключен модуль для работы с Cades plugin');
-            }
-            if (!isSetLogLevel) {
-                cadesplugin.set_log_level(cadesplugin.LOG_LEVEL_ERROR);
-                isSetLogLevel = true;
-            }
-            try {
-                yield cadesplugin;
-            }
-            catch (error) {
-                console.error(error);
-                throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при инициализации модуля для работы с Cades plugin');
-            }
-            return yield fn.apply(this, args);
+            });
         });
     };
 };
@@ -3749,7 +4188,7 @@ exports._afterPluginsLoaded = (fn) => {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports._extractCommonName = (subjectName) => { var _a; return (_a = subjectName.match(/CN=(.+?)(?:,|$)/)) === null || _a === void 0 ? void 0 : _a[1]; };
+exports._extractCommonName = function (subjectName) { var _a; return (_a = subjectName.match(/CN=(.+?)(?:,|$)/)) === null || _a === void 0 ? void 0 : _a[1]; };
 
 
 /***/ }),
@@ -3764,20 +4203,20 @@ exports._extractCommonName = (subjectName) => { var _a; return (_a = subjectName
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports._extractMeaningfulErrorMessage = (error) => {
+exports._extractMeaningfulErrorMessage = function (error) {
     var _a;
-    let errorContainer = ((_a = window.cadesplugin) === null || _a === void 0 ? void 0 : _a.getLastError) && window.cadesplugin.getLastError(error);
+    var errorContainer = ((_a = window.cadesplugin) === null || _a === void 0 ? void 0 : _a.getLastError) && window.cadesplugin.getLastError(error);
     if (!(errorContainer === null || errorContainer === void 0 ? void 0 : errorContainer.message)) {
         if (!error.message) {
             return null;
         }
         errorContainer = error;
     }
-    const containsRussianLetters = /[а-яА-Я]/.test(errorContainer.message);
+    var containsRussianLetters = /[а-яА-Я]/.test(errorContainer.message);
     if (!containsRussianLetters) {
         return null;
     }
-    const searchResult = errorContainer.message.match(/^(.*?)(?:(?:\.?\s?\(?0x)|(?:\.?$))/);
+    var searchResult = errorContainer.message.match(/^(.*?)(?:(?:\.?\s?\(?0x)|(?:\.?$))/);
     return searchResult ? searchResult[1] : null;
 };
 
@@ -3796,27 +4235,33 @@ exports._extractMeaningfulErrorMessage = (error) => {
 Object.defineProperty(exports, "__esModule", { value: true });
 // синтетические переменные, которые подменяются в рантайме
 exports.__cadesAsyncToken__ = {};
-exports.__createCadesPluginObject__ = (...args) => ({});
+exports.__createCadesPluginObject__ = function () {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+    }
+    return ({});
+};
 function getGeneratorConstructor() {
     return new Function('', 'return Object.getPrototypeOf(function*(){}).constructor')();
 }
-exports._generateCadesFn = (callback) => {
+exports._generateCadesFn = function (callback) {
     var _a;
-    const { cadesplugin } = window;
-    const cadesGeneratorsAPI = Boolean(cadesplugin.CreateObjectAsync);
-    const callbackName = callback.name || 'dynamicFn';
-    const callbackLiteral = String(callback);
-    const callbackArguments = ((_a = callbackLiteral.match(/^function[\s\w]*?\((.*?)\)/)) === null || _a === void 0 ? void 0 : _a[1]) || '';
-    const callbackBody = callbackLiteral.replace(/^.*?{([\s\S]*?)}$/, '$1');
-    let crossEnvCallbackLiteral = String(new (cadesGeneratorsAPI ? getGeneratorConstructor() : Function)(callbackArguments, callbackBody));
-    crossEnvCallbackLiteral = crossEnvCallbackLiteral.replace(/(?:\w+?\.)?__createCadesPluginObject__(\([\s\S]*?\))/gm, `cadesplugin.CreateObject${cadesGeneratorsAPI ? 'Async' : ''}$1`);
+    var cadesplugin = window.cadesplugin;
+    var cadesGeneratorsAPI = Boolean(cadesplugin.CreateObjectAsync);
+    var callbackName = callback.name || 'dynamicFn';
+    var callbackLiteral = String(callback);
+    var callbackArguments = ((_a = callbackLiteral.match(/^function[\s\w]*?\((.*?)\)/)) === null || _a === void 0 ? void 0 : _a[1]) || '';
+    var callbackBody = callbackLiteral.replace(/^.*?{([\s\S]*?)}$/, '$1');
+    var crossEnvCallbackLiteral = String(new (cadesGeneratorsAPI ? getGeneratorConstructor() : Function)(callbackArguments, callbackBody));
+    crossEnvCallbackLiteral = crossEnvCallbackLiteral.replace(/(?:\w+?\.)?__createCadesPluginObject__(\([\s\S]*?\))/gm, "cadesplugin.CreateObject" + (cadesGeneratorsAPI ? 'Async' : '') + "$1");
     crossEnvCallbackLiteral = crossEnvCallbackLiteral.replace(/(?:\w+?\.)?__cadesAsyncToken__\s*?\+\s*?\b/gm, cadesGeneratorsAPI ? 'yield ' : '');
     if (!cadesGeneratorsAPI) {
         crossEnvCallbackLiteral = crossEnvCallbackLiteral.replace(/propset_(.*?)\((.*?)\)/gm, '$1 = $2');
     }
     return [
-        cadesGeneratorsAPI ? `cadesplugin.async_spawn(${crossEnvCallbackLiteral});` : `(${crossEnvCallbackLiteral})();`,
-        `//# sourceURL=crypto-pro_${callbackName}.js`,
+        cadesGeneratorsAPI ? "cadesplugin.async_spawn(" + crossEnvCallbackLiteral + ");" : "(" + crossEnvCallbackLiteral + ")();",
+        "//# sourceURL=crypto-pro_" + callbackName + ".js",
     ].join('');
 };
 
@@ -3833,19 +4278,19 @@ exports._generateCadesFn = (callback) => {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const _afterPluginsLoaded_1 = __webpack_require__(/*! ./_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
-const _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ./_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
-const _generateCadesFn_1 = __webpack_require__(/*! ./_generateCadesFn */ "./helpers/_generateCadesFn.ts");
+var _afterPluginsLoaded_1 = __webpack_require__(/*! ./_afterPluginsLoaded */ "./helpers/_afterPluginsLoaded.ts");
+var _extractMeaningfulErrorMessage_1 = __webpack_require__(/*! ./_extractMeaningfulErrorMessage */ "./helpers/_extractMeaningfulErrorMessage.ts");
+var _generateCadesFn_1 = __webpack_require__(/*! ./_generateCadesFn */ "./helpers/_generateCadesFn.ts");
 /**
  * Возвращает сертификат в формате Cades по отпечатку
  *
  * @param thumbprint - отпечаток сертификата
  * @returns сертификат в формате Cades
  */
-exports._getCadesCert = _afterPluginsLoaded_1._afterPluginsLoaded((thumbprint) => {
-    const { cadesplugin } = window;
+exports._getCadesCert = _afterPluginsLoaded_1._afterPluginsLoaded(function (thumbprint) {
+    var cadesplugin = window.cadesplugin;
     return eval(_generateCadesFn_1._generateCadesFn(function _getCadesCert() {
-        let cadesStore;
+        var cadesStore;
         try {
             cadesStore = _generateCadesFn_1.__cadesAsyncToken__ + _generateCadesFn_1.__createCadesPluginObject__('CAdESCOM.Store');
         }
@@ -3864,8 +4309,8 @@ exports._getCadesCert = _afterPluginsLoaded_1._afterPluginsLoaded((thumbprint) =
             console.error(error);
             throw new Error(_extractMeaningfulErrorMessage_1._extractMeaningfulErrorMessage(error) || 'Ошибка при открытии хранилища');
         }
-        let cadesCertificateList;
-        let certificatesCount;
+        var cadesCertificateList;
+        var certificatesCount;
         try {
             cadesCertificateList = _generateCadesFn_1.__cadesAsyncToken__ + cadesStore.Certificates;
             certificatesCount = _generateCadesFn_1.__cadesAsyncToken__ + cadesCertificateList.Count;
@@ -3877,13 +4322,13 @@ exports._getCadesCert = _afterPluginsLoaded_1._afterPluginsLoaded((thumbprint) =
         if (!certificatesCount) {
             throw new Error('Нет доступных сертификатов');
         }
-        let cadesCertificate;
+        var cadesCertificate;
         try {
             cadesCertificateList =
                 _generateCadesFn_1.__cadesAsyncToken__ + cadesCertificateList.Find(cadesplugin.CAPICOM_CERTIFICATE_FIND_SHA1_HASH, thumbprint);
-            const count = _generateCadesFn_1.__cadesAsyncToken__ + cadesCertificateList.Count;
+            var count = _generateCadesFn_1.__cadesAsyncToken__ + cadesCertificateList.Count;
             if (!count) {
-                throw new Error(`Сертификат с отпечатком: "${thumbprint}" не найден`);
+                throw new Error("\u0421\u0435\u0440\u0442\u0438\u0444\u0438\u043A\u0430\u0442 \u0441 \u043E\u0442\u043F\u0435\u0447\u0430\u0442\u043A\u043E\u043C: \"" + thumbprint + "\" \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D");
             }
             cadesCertificate = _generateCadesFn_1.__cadesAsyncToken__ + cadesCertificateList.Item(1);
         }
@@ -3915,7 +4360,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * В IE необходимо использовать специфичный формат "VT_DATE"
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Microsoft_Extensions/Date.getVarDate
  */
-exports._getDateObj = (dateObj) => (dateObj.getVarDate ? dateObj.getVarDate() : dateObj);
+exports._getDateObj = function (dateObj) { return (dateObj.getVarDate ? dateObj.getVarDate() : dateObj); };
 
 
 /***/ }),
@@ -3930,8 +4375,8 @@ exports._getDateObj = (dateObj) => (dateObj.getVarDate ? dateObj.getVarDate() : 
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const oldestSupportedCSPVersion = 4.0;
-exports._isSupportedCSPVersion = (version) => {
+var oldestSupportedCSPVersion = 4.0;
+exports._isSupportedCSPVersion = function (version) {
     var _a;
     version = (_a = version.match(/\d+?\b(?:\.\d+)?/)) === null || _a === void 0 ? void 0 : _a[0];
     return Number(version) >= oldestSupportedCSPVersion;
@@ -3950,12 +4395,12 @@ exports._isSupportedCSPVersion = (version) => {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-exports._isSupportedCadesVersion = (version) => {
-    const match = version.match(/(\d+)\.(\d+)\.(\d+)/);
+exports._isSupportedCadesVersion = function (version) {
+    var match = version.match(/(\d+)\.(\d+)\.(\d+)/);
     if (!match) {
         return false;
     }
-    const [, major, minor, patch] = match;
+    var major = match[1], minor = match[2], patch = match[3];
     if (Number(major) < 2) {
         return false;
     }
@@ -3978,7 +4423,7 @@ exports._isSupportedCadesVersion = (version) => {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
-const constants_1 = __webpack_require__(/*! ../constants */ "./constants/index.ts");
+var constants_1 = __webpack_require__(/*! ../constants */ "./constants/index.ts");
 /**
  * Парсит информацию из строки с информацией о сертификате
  *
@@ -3986,32 +4431,32 @@ const constants_1 = __webpack_require__(/*! ../constants */ "./constants/index.t
  * @param rawInfo - данные для парсинга
  * @returns расшифрованная информация по отдельным тэгам
  */
-exports._parseCertInfo = (tagsTranslations, rawInfo) => {
-    const extractedEntities = rawInfo.match(/([а-яА-Яa-zA-Z0-9\s.]+)=(?:("[^"]+?")|(.+?))(?:,|$)/g);
+exports._parseCertInfo = function (tagsTranslations, rawInfo) {
+    var extractedEntities = rawInfo.match(/([а-яА-Яa-zA-Z0-9\s.]+)=(?:("[^"]+?")|(.+?))(?:,|$)/g);
     if (extractedEntities) {
-        return extractedEntities.map((group) => {
+        return extractedEntities.map(function (group) {
             var _a, _b, _c;
-            const segmentsMatch = group.trim().match(/^([а-яА-Яa-zA-Z0-9\s.]+)=(.+?),?$/);
-            let title = segmentsMatch === null || segmentsMatch === void 0 ? void 0 : segmentsMatch[1];
+            var segmentsMatch = group.trim().match(/^([а-яА-Яa-zA-Z0-9\s.]+)=(.+?),?$/);
+            var title = segmentsMatch === null || segmentsMatch === void 0 ? void 0 : segmentsMatch[1];
             // Вырезаем лишние кавычки
-            const description = (_b = (_a = segmentsMatch === null || segmentsMatch === void 0 ? void 0 : segmentsMatch[2]) === null || _a === void 0 ? void 0 : _a.replace(/^"(.*)"/, '$1')) === null || _b === void 0 ? void 0 : _b.replace(/"{2}/g, '"');
-            const oidIdentifierMatch = title === null || title === void 0 ? void 0 : title.match(/^OID\.(.*)/);
-            const oidIdentifier = oidIdentifierMatch === null || oidIdentifierMatch === void 0 ? void 0 : oidIdentifierMatch[1];
-            let isTranslated = false;
+            var description = (_b = (_a = segmentsMatch === null || segmentsMatch === void 0 ? void 0 : segmentsMatch[2]) === null || _a === void 0 ? void 0 : _a.replace(/^"(.*)"/, '$1')) === null || _b === void 0 ? void 0 : _b.replace(/"{2}/g, '"');
+            var oidIdentifierMatch = title === null || title === void 0 ? void 0 : title.match(/^OID\.(.*)/);
+            var oidIdentifier = oidIdentifierMatch === null || oidIdentifierMatch === void 0 ? void 0 : oidIdentifierMatch[1];
+            var isTranslated = false;
             // Если нашли в тайтле ОИД, пытаемся его расшифровать
             if (oidIdentifier) {
-                const oidTranslation = constants_1.OIDS_DICTIONARY[oidIdentifier];
+                var oidTranslation = constants_1.OIDS_DICTIONARY[oidIdentifier];
                 if (oidTranslation) {
                     title = oidTranslation;
                     isTranslated = true;
                 }
             }
-            const tagTranslation = (_c = tagsTranslations.find((tag) => tag.possibleNames.find((name) => name === title))) === null || _c === void 0 ? void 0 : _c.translation;
+            var tagTranslation = (_c = tagsTranslations.find(function (tag) { return tag.possibleNames.find(function (name) { return name === title; }); })) === null || _c === void 0 ? void 0 : _c.translation;
             if (tagTranslation) {
                 title = tagTranslation;
                 isTranslated = true;
             }
-            return { description, title, isTranslated };
+            return { description: description, title: title, isTranslated: isTranslated };
         });
     }
 };
@@ -4802,4 +5247,4 @@ exports._parseCertInfo = (tagsTranslations, rawInfo) => {
 
 /******/ });
 });
-//# sourceMappingURL=crypto-pro.js.map
+//# sourceMappingURL=arhipdev-crypto-pro.js.map
