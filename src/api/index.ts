@@ -4,6 +4,7 @@ export * from './getSystemInfo';
 export * from './isValidSystemSetup';
 export * from './createSignature';
 export * from './createXMLSignature';
+export * from './createXMLTempSignature';
 export * from './createDetachedSignature';
 export * from './createAttachedSignature';
 export * from './createHash';
