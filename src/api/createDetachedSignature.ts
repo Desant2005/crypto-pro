@@ -1,20 +1,26 @@
-import { CADESCOM_AUTHENTICATED_ATTRIBUTE_SIGNING_TIME } from '../constants';
-import { _afterPluginsLoaded } from '../helpers/_afterPluginsLoaded';
-import { _extractMeaningfulErrorMessage } from '../helpers/_extractMeaningfulErrorMessage';
-import { __cadesAsyncToken__, __createCadesPluginObject__, _generateCadesFn } from '../helpers/_generateCadesFn';
-import { _getCadesCert } from '../helpers/_getCadesCert';
-import { _getDateObj } from '../helpers/_getDateObj';
+import {CADESCOM_AUTHENTICATED_ATTRIBUTE_SIGNING_TIME} from '../constants';
+import {_afterPluginsLoaded} from '../helpers/_afterPluginsLoaded';
+import {_extractMeaningfulErrorMessage} from '../helpers/_extractMeaningfulErrorMessage';
+import {__cadesAsyncToken__, __createCadesPluginObject__, _generateCadesFn} from '../helpers/_generateCadesFn';
+import {_getCadesCert} from '../helpers/_getCadesCert';
+import {_getDateObj} from '../helpers/_getDateObj';
+
+interface Attributes {
+  commentAttr: any;
+  usageAttr: any;
+}
 
 /**
  * Создает отсоединенную подпись хеша по отпечатку сертификата
  *
  * @param thumbprint - отпечаток сертификата
  * @param messageHash - хеш подписываемого сообщения, сгенерированный по ГОСТ Р 34.11-2012 256 бит
+ * @param attributes = { commentAttr - примечание, usageAttr - тип подписи } - атрибуты подписи
  * @returns подпись в формате PKCS#7
  */
 export const createDetachedSignature = _afterPluginsLoaded(
-  async (thumbprint: string, messageHash: string): Promise<string> => {
-    const { cadesplugin } = window;
+  async (thumbprint: string, messageHash: string, attributes?: Attributes): Promise<string> => {
+    const {cadesplugin} = window;
     const cadesCertificate = await _getCadesCert(thumbprint);
 
     return eval(
@@ -40,6 +46,17 @@ export const createDetachedSignature = _afterPluginsLoaded(
         try {
           void (__cadesAsyncToken__ + cadesAttrs.propset_Name(CADESCOM_AUTHENTICATED_ATTRIBUTE_SIGNING_TIME));
           void (__cadesAsyncToken__ + cadesAttrs.propset_Value(currentTime));
+          // Set commentAttr
+          if (attributes.commentAttr) {
+            void (__cadesAsyncToken__ + cadesAttrs.propset_Name('1.2.643.2.45.1.1.1'));
+            void (__cadesAsyncToken__ + cadesAttrs.propset_Value(attributes.commentAttr));
+          }
+
+          // Set usageAttr
+          if (attributes.usageAttr) {
+            void (__cadesAsyncToken__ + cadesAttrs.propset_Name('1.2.643.2.45.1.1.3'));
+            void (__cadesAsyncToken__ + cadesAttrs.propset_Value(attributes.usageAttr));
+          }
         } catch (error) {
           console.error(error);
 
